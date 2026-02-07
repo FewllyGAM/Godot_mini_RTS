@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw7ui5rjjpjux"]
+
+[ext_resource type="Script" uid="uid://b7cpbjg142g5o" path="res://scripts/UI/BuildingButton.cs" id="1_v4oyg"]
+[ext_resource type="PackedScene" uid="uid://cby0i74iu6iko" path="res://scenes/UI/resource_display.tscn" id="2_ufg3m"]
+
+[node name="BuildingButton" type="VBoxContainer" node_paths=PackedStringArray("button", "resourceCostArea")]
+offset_right = 160.0
+offset_bottom = 42.0
+script = ExtResource("1_v4oyg")
+button = NodePath("Button")
+resourceCostArea = NodePath("GridContainer")
+resourceDisplay = ExtResource("2_ufg3m")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Construção 1"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 11
+columns = 2
+
+[node name="ResourceDisplay" parent="GridContainer" instance=ExtResource("2_ufg3m")]
+layout_mode = 2
+
+[node name="ResourceDisplay2" parent="GridContainer" instance=ExtResource("2_ufg3m")]
+layout_mode = 2
+
+[node name="ResourceDisplay3" parent="GridContainer" instance=ExtResource("2_ufg3m")]
+layout_mode = 2
+
+[node name="ResourceDisplay4" parent="GridContainer" instance=ExtResource("2_ufg3m")]
+layout_mode = 2
+
+[connection signal="button_down" from="Button" to="." method="OnButtonDown"]

@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://c75coe588vm4j"]
+
+[ext_resource type="Texture2D" uid="uid://bn71i5jngd03a" path="res://assets/sprites/dungeon.png" id="1_57ttx"]
+[ext_resource type="Script" uid="uid://0juqiylc5mxm" path="res://scripts/UI/WorkerSlot.cs" id="2_3ki6i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ki6i"]
+atlas = ExtResource("1_57ttx")
+region = Rect2(16, 112, 16, 16)
+
+[node name="WorkerSlot" type="TextureRect" node_paths=PackedStringArray("progress")]
+custom_minimum_size = Vector2(50, 50)
+offset_right = 50.0
+offset_bottom = 50.0
+texture = SubResource("AtlasTexture_3ki6i")
+script = ExtResource("2_3ki6i")
+progress = NodePath("work_progress_bg")
+
+[node name="nothired" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6666667)
+
+[node name="work_progress_bg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.07752409, 0.13423869, 0.026347796, 1)
+
+[node name="work_progress" type="ColorRect" parent="work_progress_bg"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -3.5
+offset_right = 50.0
+offset_bottom = 3.5
+grow_vertical = 2
+color = Color(0.4828455, 0.7121115, 0.26659772, 1)

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ResourceAreaData" load_steps=4 format=3 uid="uid://df532glx2mkq7"]
+
+[ext_resource type="Script" uid="uid://dv18tj3u0d15b" path="res://scripts/resource_cs/StatsData.cs" id="1_bi17h"]
+[ext_resource type="Script" uid="uid://ctevt4vixn7xp" path="res://scripts/resource_cs/ResourceAreaData.cs" id="1_jb57o"]
+
+[sub_resource type="Resource" id="Resource_8bpm4"]
+script = ExtResource("1_bi17h")
+
+[resource]
+script = ExtResource("1_jb57o")
+AreaResource = 1
+extractionTime = 20.0
+resourceQuant = 30
+buildingName = "Mushroom Camp"
+buildingScene = "re-mushroom_area"
+Stats = SubResource("Resource_8bpm4")
+BuildingCosts = null
+maxWorkers = 6
+metadata/_custom_type_script = "uid://ctevt4vixn7xp"

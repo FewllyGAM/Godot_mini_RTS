@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://cby0i74iu6iko"]
+
+[ext_resource type="Texture2D" uid="uid://cy81b88u0imwg" path="res://assets/sprites/town.png" id="1_bsg47"]
+[ext_resource type="Script" uid="uid://wry8kuo7rejs" path="res://scripts/UI/ResourceDisplay.cs" id="1_lbs7t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbs7t"]
+atlas = ExtResource("1_bsg47")
+region = Rect2(160, 128, 16, 16)
+
+[node name="ResourceDisplay" type="Control" node_paths=PackedStringArray("texture", "quantity")]
+custom_minimum_size = Vector2(64.715, 24.055)
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 4
+script = ExtResource("1_lbs7t")
+texture = NodePath("TextureRect")
+quantity = NodePath("quantity")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 10.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_lbs7t")
+
+[node name="quantity" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.714966
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"

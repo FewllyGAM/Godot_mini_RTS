@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://chyqyy01gstve"]
+
+[ext_resource type="Script" uid="uid://dsgud60snp73g" path="res://scripts/gameplay/building/EnemySpawn.cs" id="1_rdif0"]
+[ext_resource type="PackedScene" uid="uid://bs10my0gt484o" path="res://scenes/enemy.tscn" id="2_i6m04"]
+[ext_resource type="Texture2D" uid="uid://cy81b88u0imwg" path="res://assets/sprites/town.png" id="2_v6yka"]
+[ext_resource type="Resource" uid="uid://boac0g8ptdwqs" path="res://resources/e_spawner.tres" id="3_ltj2o"]
+[ext_resource type="Script" uid="uid://dlaywqswvwy4g" path="res://scripts/UI/HealthBar.cs" id="5_ltj2o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phrl0"]
+size = Vector2(32, 33)
+
+[node name="EnemySpawn" type="Area2D"]
+script = ExtResource("1_rdif0")
+enemiesQuantity = 2
+enemyScene = ExtResource("2_i6m04")
+BuildingData = ExtResource("3_ltj2o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_v6yka")
+region_enabled = true
+region_rect = Rect2(48, 144, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_phrl0")
+
+[node name="spawn_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HP" type="ColorRect" parent="."]
+offset_left = -13.0
+offset_top = -21.0
+offset_right = 13.0
+offset_bottom = -19.0
+color = Color(0.14767182, 0.14767179, 0.14767179, 1)
+script = ExtResource("5_ltj2o")
+
+[node name="health_bar" type="ColorRect" parent="HP"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -1.0
+offset_right = 26.0
+offset_bottom = 1.0
+grow_vertical = 2
+color = Color(0.8627451, 0, 0, 1)
+
+[connection signal="input_event" from="." to="." method="OnInputEvent"]
+[connection signal="timeout" from="spawn_timer" to="." method="OnTimeout"]

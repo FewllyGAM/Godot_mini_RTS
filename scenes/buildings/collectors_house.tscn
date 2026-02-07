@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cedqqv1wsqu7g"]
+
+[ext_resource type="PackedScene" uid="uid://7xgkr2bhxgx" path="res://scenes/buildings/wood_cutter.tscn" id="1_r7k48"]
+[ext_resource type="Resource" uid="uid://bdcupiyvk8o6s" path="res://resources/collectors_house.tres" id="2_dhj4e"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dhj4e"]
+load_path = "res://.godot/imported/town.png-63fa61d263ba3cfa8fb68e09abc185bb.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4whom"]
+size = Vector2(25, 25)
+
+[node name="CollectorsHouse" instance=ExtResource("1_r7k48")]
+Resource = 1
+BuildingData = ExtResource("2_dhj4e")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = SubResource("CompressedTexture2D_dhj4e")
+region_rect = Rect2(144, 159, 16, 16)
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_4whom")

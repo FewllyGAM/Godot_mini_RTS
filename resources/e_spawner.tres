@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BuildingData" load_steps=4 format=3 uid="uid://boac0g8ptdwqs"]
+
+[ext_resource type="Script" uid="uid://dv18tj3u0d15b" path="res://scripts/resource_cs/StatsData.cs" id="1_dj1av"]
+[ext_resource type="Script" uid="uid://1ali1te4noht" path="res://scripts/resource_cs/BuildingData.cs" id="2_kcmvj"]
+
+[sub_resource type="Resource" id="Resource_eivkm"]
+script = ExtResource("1_dj1av")
+MaxHealth = 500.0
+
+[resource]
+script = ExtResource("2_kcmvj")
+buildingName = "Mausoléu"
+buildingScene = "enemy_spawn"
+Stats = SubResource("Resource_eivkm")
+BuildingCosts = null
+metadata/_custom_type_script = "uid://1ali1te4noht"

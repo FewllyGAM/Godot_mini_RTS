@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddcry5jbkjwc7"]
+
+[ext_resource type="PackedScene" uid="uid://brdygfcfrmq84" path="res://scenes/buildings/village_building.tscn" id="1_sr1lu"]
+[ext_resource type="Script" uid="uid://datfpjpxnquus" path="res://scripts/gameplay/building/House.cs" id="2_xbhq3"]
+[ext_resource type="Script" uid="uid://b376xn0irj3kr" path="res://scripts/resource_cs/ResourceData.cs" id="3_goaca"]
+[ext_resource type="Resource" uid="uid://dxuklbm6j1mo8" path="res://resources/house.tres" id="3_xbhq3"]
+
+[sub_resource type="Resource" id="Resource_goaca"]
+script = ExtResource("3_goaca")
+Resource = 1
+Quantity = 50
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtlar"]
+size = Vector2(36, 35)
+
+[node name="House" instance=ExtResource("1_sr1lu")]
+script = ExtResource("2_xbhq3")
+IsFirstHouse = false
+VillagerCost = SubResource("Resource_goaca")
+BuildingData = ExtResource("3_xbhq3")
+
+[node name="Sprite2D" parent="." index="0"]
+modulate = Color(1, 0.65350246, 0.61592865, 1)
+scale = Vector2(0.53125, 0.53125)
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_qtlar")

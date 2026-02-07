@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BuildingData" load_steps=6 format=3 uid="uid://ywvmxppudm7f"]
+
+[ext_resource type="Script" uid="uid://b376xn0irj3kr" path="res://scripts/resource_cs/ResourceData.cs" id="1_eivkm"]
+[ext_resource type="Script" uid="uid://1ali1te4noht" path="res://scripts/resource_cs/BuildingData.cs" id="1_kr1sy"]
+[ext_resource type="Script" uid="uid://dv18tj3u0d15b" path="res://scripts/resource_cs/StatsData.cs" id="1_y7nrv"]
+
+[sub_resource type="Resource" id="Resource_00ir0"]
+script = ExtResource("1_eivkm")
+Quantity = 100
+metadata/_custom_type_script = "uid://b376xn0irj3kr"
+
+[sub_resource type="Resource" id="Resource_eivkm"]
+script = ExtResource("1_y7nrv")
+MaxHealth = 500.0
+
+[resource]
+script = ExtResource("1_kr1sy")
+buildingName = "Center"
+buildingScene = "village_building"
+Stats = SubResource("Resource_eivkm")
+BuildingCosts = Array[Object]([SubResource("Resource_00ir0")])
+metadata/_custom_type_script = "uid://1ali1te4noht"

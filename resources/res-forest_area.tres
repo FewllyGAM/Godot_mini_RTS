@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ResourceAreaData" load_steps=2 format=3 uid="uid://cfo5mlwvlqtfk"]
+
+[ext_resource type="Script" uid="uid://ctevt4vixn7xp" path="res://scripts/resource_cs/ResourceAreaData.cs" id="2_iudvn"]
+
+[resource]
+script = ExtResource("2_iudvn")
+extractionTime = 10.0
+buildingName = "Forest"
+buildingScene = "res-forest_area"
+BuildingCosts = null
+maxWorkers = 6
+metadata/_custom_type_script = "uid://ctevt4vixn7xp"

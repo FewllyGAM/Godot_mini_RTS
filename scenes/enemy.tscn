@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://bs10my0gt484o"]
+
+[ext_resource type="Script" uid="uid://cc7p887kf2gfa" path="res://scripts/gameplay/Enemy.cs" id="1_4ra3w"]
+[ext_resource type="Script" uid="uid://dv18tj3u0d15b" path="res://scripts/resource_cs/StatsData.cs" id="2_5uy6h"]
+[ext_resource type="Texture2D" uid="uid://bn71i5jngd03a" path="res://assets/sprites/dungeon.png" id="3_c4w8v"]
+[ext_resource type="Script" uid="uid://dlaywqswvwy4g" path="res://scripts/UI/HealthBar.cs" id="4_5uy6h"]
+[ext_resource type="Script" uid="uid://bqm64dvi7jw3c" path="res://scripts/gameplay/ThreatArea.cs" id="5_c4w8v"]
+
+[sub_resource type="Resource" id="Resource_a85ww"]
+script = ExtResource("2_5uy6h")
+MaxHealth = 40.0
+AttackDamage = 15.0
+AttackRange = 25.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bjpa3"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
+radius = 104.00481
+
+[node name="Enemy" type="CharacterBody2D"]
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_4ra3w")
+Stats = SubResource("Resource_a85ww")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.7607843, 0, 1, 1)
+position = Vector2(0, -8)
+texture = ExtResource("3_c4w8v")
+region_enabled = true
+region_rect = Rect2(0, 160, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_bjpa3")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="HP" type="ColorRect" parent="."]
+offset_left = -7.0
+offset_top = -19.0
+offset_right = 7.0
+offset_bottom = -17.0
+color = Color(0.1584723, 0.15847233, 0.1584723, 1)
+script = ExtResource("4_5uy6h")
+
+[node name="health_bar" type="ColorRect" parent="HP"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -1.0
+offset_right = 14.0
+offset_bottom = 1.0
+grow_vertical = 2
+color = Color(0.8627451, 0, 0, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 6
+monitorable = false
+script = ExtResource("5_c4w8v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_4ra3w")
+
+[connection signal="navigation_finished" from="NavigationAgent2D" to="." method="OnNavigationFinished"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="OnAgentVelocityComputed"]
+[connection signal="area_entered" from="Area2D" to="Area2D" method="OnScanArea"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="OnScanTarget"]
